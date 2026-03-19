@@ -8,7 +8,7 @@ $phone  = '';
 $lop_hoc_id = '';
 $status = 0;
 
-// Lấy danh sách lớp cho dropdown
+
 $dsLop = $pdo->query("SELECT id, name FROM lop_hoc WHERE status = 1 ORDER BY name ASC")->fetchAll();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $lop_hoc_id = trim($_POST['lop_hoc_id'] ?? '');
     $status     = isset($_POST['status']) ? 1 : 0;
 
-    // Validation
+
     if ($name === '') {
         $errors['name'] = 'Vui lòng nhập họ tên sinh viên.';
     } elseif (strlen($name) > 100) {
@@ -140,7 +140,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <form method="POST" novalidate>
 
-                <!-- Họ tên -->
+              
                 <div class="mb-3">
                     <label class="form-label" for="name">Họ Và Tên <span class="req">*</span></label>
                     <div class="input-group">
@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
 
-                <!-- Email -->
+                
                 <div class="mb-3">
                     <label class="form-label" for="email">Email <span class="req">*</span></label>
                     <div class="input-group">
@@ -181,7 +181,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
 
-                <!-- Số điện thoại -->
+                
                 <div class="mb-3">
                     <label class="form-label" for="phone">Số Điện Thoại <span class="req">*</span></label>
                     <div class="input-group">
@@ -203,7 +203,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 <hr class="section-divider">
 
-                <!-- Lớp học -->
+               
                 <div class="mb-3">
                     <label class="form-label" for="lop_hoc_id">Lớp Học <span class="req">*</span></label>
                     <div class="input-group">
@@ -226,7 +226,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
 
-                <!-- Trạng thái -->
+                
                 <div class="mb-4">
                     <label class="form-label d-block">Trạng Thái</label>
                     <div class="form-check form-switch">
@@ -241,7 +241,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
 
-                <!-- Buttons -->
+               
                 <div class="d-flex gap-2">
                     <button type="submit" class="btn btn-primary px-4" <?= empty($dsLop) ? 'disabled' : '' ?>>
                         <i class="bi bi-person-plus me-1"></i> Thêm Sinh Viên
