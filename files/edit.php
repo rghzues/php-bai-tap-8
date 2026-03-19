@@ -1,11 +1,11 @@
 <?php
 require_once '../config/db.php';
 
-// Lấy ID từ URL
+
 $id = isset($_GET['id']) && is_numeric($_GET['id']) ? (int)$_GET['id'] : 0;
 if (!$id) { header('Location: index.php'); exit; }
 
-// Lấy dữ liệu lớp hiện tại
+
 $stmt = $pdo->prepare("SELECT * FROM lop_hoc WHERE id = ?");
 $stmt->execute([$id]);
 $lop = $stmt->fetch();
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (strlen($name) > 100) {
         $errors['name'] = 'Tên lớp không được quá 100 ký tự.';
     } else {
-        // Kiểm tra trùng tên (bỏ qua chính nó)
+
         $check = $pdo->prepare("SELECT id FROM lop_hoc WHERE name = ? AND id != ?");
         $check->execute([$name, $id]);
         if ($check->fetch()) {
@@ -118,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <?php endif; ?>
                 </div>
 
-                <!-- Trạng thái -->
+
                 <div class="mb-4">
                     <label class="form-label d-block">Trạng Thái</label>
                     <div class="form-check form-switch">
@@ -133,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                 </div>
 
-                <!-- Buttons -->
+
                 <div class="d-flex gap-2 pt-2">
                     <button type="submit" class="btn btn-warning px-4 text-white">
                         <i class="bi bi-save me-1"></i> Cập Nhật
